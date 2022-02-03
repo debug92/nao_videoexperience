@@ -1,0 +1,24 @@
+topic: ~ExampleDialog()
+language: iti
+
+# Defining extra concepts out of words or group of words
+concept:(ciao) [ciao "ehy" buongiorno]
+
+concept:(yes) [si certo ovvio]
+concept:(no) [no]
+
+concept:(porto) ["colonne del porto" "colonne porto"]
+concept:(castello) ["castello svevo" "castello svevo di federico secondo" "castello di federico secondo"]
+concept:(chiesa) ["chiesa di san giovanni" "chiesa san giovanni sepolcro"]
+concept:(stop) ["basta" fermo stop stoppati]
+
+u:(~stop) "D'accordo, fermo il video." $stop=1
+u:(~ciao) "Ciao, ho dei video in memoria. Ti va di vederne uno?"
+   u1:(~yes) Vuoi vedere il video delle colonne del porto, il castello di federico secondo o la chiesa di san giovanni al sepolcro?
+       u2:(~porto) Bene. $first=1
+       u2:(~castello) Bene. $second=1
+       u2:(~chiesa) Bene. $third=1
+       
+   u1:(~no) Grazie comunque.
+# Replying to speech
+#u:(~hello) ~hello
